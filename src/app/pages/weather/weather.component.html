@@ -1,0 +1,45 @@
+<div class="recommendation-container">
+  <h3>Clothing recommendation</h3>
+  <h2>Lookup</h2>
+  Location:
+  <div nz-row>
+    <div nz-col [nzSpan]="12">
+      <nz-input-group nzApiCall [nzAddOnBefore]="langSelect" [nzAddOnAfter]="nzApiCallButton">
+        <input class="inp-zip" nzSize="large" nz-input placeholder="city name or zip code" #locId />
+      </nz-input-group>
+    </div>
+  </div>
+  <ng-template #langSelect>
+    <select class="select-lang" [(ngModel)]="langId" nzApiCall>
+      <option *ngFor="let country of countries" [ngValue]="country.code|lowercase">{{ country.code }}</option>
+    </select>
+  </ng-template>
+  <ng-template #nzApiCallButton>
+    <button class="btn-submit" nzApiCall nz-button nzType="primary" nzSize="large" (click)="ApiCall(locId.value)">Submit</button>
+  </ng-template>
+  <h2 style="margin-top: 1em;">Recommendation</h2>
+  <ng-template [ngIf]="getLevelById(this.dataLevel)">
+    <div nz-row>
+      <div nz-col [nzSpan]="8">
+          <div class="level-item" nz-row nzType="flex">
+            <div class="level-indicator" nz-col [nzSpan]="3">{{ currentLevel.level }}</div>
+            <div class="level-name" nz-col [nzSpan]="21">{{ currentLevel.name }}</div>
+          </div>
+      </div>
+      <div nz-col [nzSpan]="1"></div>
+      <div class="current-information" nz-col [nzSpan]="8">
+        <h2>Current Information</h2>
+        <div nz-row nzJustify="space-between">
+          <div class="flex-c-center" nz-col [nzSpan]="16">
+            <h3 style="margin: 0px;border-bottom:1px solid #ccc;">{{ currentCity }}</h3>
+            <h3 style="margin: 0px;">{{ currentWeatherinfo }}</h3>
+          </div>
+          <div class="flex-c-center" nz-col [nzSpan]="8">
+            <h2 style="margin: 0px;text-align: center;">{{ currentTemp }} °C</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
