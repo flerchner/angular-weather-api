@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:886150576910:android:6623b5d64b1dbb5ad5355f",
         "android_client_info": {
-          "package_name": "angular-weather-api"
+          "package_name": "io.ionic.starter"
         }
       },
       "oauth_client": [
