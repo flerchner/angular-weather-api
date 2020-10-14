@@ -3,17 +3,17 @@
       <div class="app-header">
         <div class="app-inner-header">
           <div nz-row nzJustify="center">
-            <div nz-col class="logo" [nzSpan]="4">
-              <div nz-row>
-                <div nz-col [nzSpan]="6">
-                  <img style="margin-left: 35px;" routerLink="/welcome" width="50px" height="50px" src="./assets/images/testlogo.png" />
+            <div nz-col class="logo" [nzSpan]="6">
+              <div nz-row nzJustify="left">
+                <div nz-col [nzSpan]="24" [nzXl]="6">
+                  <img routerLink="/welcome" width="50px" height="50px" src="./assets/images/testlogo.png" />
                 </div>
-                <div nz-col [nzSpan]="18">
+                <div nz-col [nzLg]="18" [nzXs]="0">
                   <p style="text-align: center;">Test Project 2020 | Version 0.0.1</p>
                 </div>
               </div>
             </div>
-            <div nz-col nz-menu class="header-navigation" [nzSpan]="8">
+            <div nz-col nz-menu class="header-navigation" [nzSpan]="16">
               <a nz-menu-item routerLink="/welcome" class="nz-menu-item-link">Welcome</a>
               <a nz-menu-item routerLink="/weather" class="nz-menu-item-link">Weather</a>
               <a nz-menu-item routerLink="/levels" class="nz-menu-item-link">Levels</a>
@@ -23,7 +23,7 @@
       </div>
     </nz-header>
     <nz-content nz-row nzJustify="center">
-      <div nz-col [nzSpan]="12" class="inner-content">
+      <div nz-col [nzSpan]="22" class="inner-content">
         <router-outlet></router-outlet>
       </div>
     </nz-content>

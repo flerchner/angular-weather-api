@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "886150576910",
+    "firebase_url": "https://testproject-cceb2.firebaseio.com",
+    "project_id": "testproject-cceb2",
+    "storage_bucket": "testproject-cceb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886150576910:android:6623b5d64b1dbb5ad5355f",
+        "android_client_info": {
+          "package_name": "angular-weather-api"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886150576910-82gmraejg7p38c59km1bc0303q3dmeom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaqmiAKvplZdamCguPuZ7lvR9GOM-siqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886150576910-82gmraejg7p38c59km1bc0303q3dmeom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
