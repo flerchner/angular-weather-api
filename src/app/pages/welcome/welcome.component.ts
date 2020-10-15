@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 
 @Component({
   selector: 'app-welcome',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private push: Push) {
+  }
 
   ngOnInit() {
   }

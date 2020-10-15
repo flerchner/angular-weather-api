@@ -3,7 +3,7 @@
   <h2>Lookup</h2>
   Location:
   <div nz-row>
-    <div nz-col [nzSpan]="12">
+    <div nz-col [nzSpan]="24">
       <nz-input-group nzApiCall [nzAddOnBefore]="langSelect" [nzAddOnAfter]="nzApiCallButton">
         <input class="inp-zip" nzSize="large" nz-input placeholder="city name or zip code" #locId />
       </nz-input-group>
@@ -20,14 +20,13 @@
   <h2 style="margin-top: 1em;">Recommendation</h2>
   <ng-template [ngIf]="getLevelById(this.dataLevel)">
     <div nz-row>
-      <div nz-col [nzSpan]="8">
+      <div nz-col [nzSpan]="24">
           <div class="level-item" nz-row nzType="flex">
             <div class="level-indicator" nz-col [nzSpan]="3">{{ currentLevel.level }}</div>
             <div class="level-name" nz-col [nzSpan]="21">{{ currentLevel.name }}</div>
           </div>
       </div>
-      <div nz-col [nzSpan]="1"></div>
-      <div class="current-information" nz-col [nzSpan]="8">
+      <div class="current-information" nz-col [nzSpan]="24">
         <h2>Current Information</h2>
         <div nz-row nzJustify="space-between">
           <div class="flex-c-center" nz-col [nzSpan]="16">

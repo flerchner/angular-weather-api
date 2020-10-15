@@ -15,7 +15,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { IonicModule } from '@ionic/angular';
-
+import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 registerLocaleData(en);
 
 @NgModule({
@@ -35,7 +35,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     IonicModule.forRoot()
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, Push],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
