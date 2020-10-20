@@ -27,6 +27,10 @@
     <feature name="IonicWebView">
         <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView" />
     </feature>
+    <feature name="BranchSDK">
+        <param name="android-package" value="io.branch.BranchSDK" />
+        <param name="onload" value="true" />
+    </feature>
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -38,6 +42,11 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <branch-config>
+        <branch-key value="key_live_ieV48mlhlm0746ND2uTOEknfwqm8Ghov" />
+        <uri-scheme value="branchcordova" />
+        <link-domain value="d8n8v.app.link" />
+    </branch-config>
     <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
         <application android:networkSecurityConfig="@xml/network_security_config" />
     </edit-config>

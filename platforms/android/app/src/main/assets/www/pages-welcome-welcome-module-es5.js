@@ -31,13 +31,86 @@
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
       "fXoL");
+      /* harmony import */
+
+
+      var _ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @ionic-native/push/ngx */
+      "sJdB");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic/angular */
+      "TEn/");
 
       var WelcomeComponent = /*#__PURE__*/function () {
-        function WelcomeComponent() {
+        function WelcomeComponent(push, platform) {
           _classCallCheck(this, WelcomeComponent);
+
+          this.push = push;
+          this.platform = platform;
+          this.initIonic();
         }
 
         _createClass(WelcomeComponent, [{
+          key: "initIonic",
+          value: function initIonic() {
+            if (this.platform.is('cordova')) {
+              // to check if we have permission
+              this.push.hasPermission().then(function (res) {
+                if (res.isEnabled) {
+                  console.log('We have permission to send push notifications');
+                } else {
+                  console.log('We do not have permission to send push notifications');
+                }
+              }); // Create a channel (Android O and above). You'll need to provide the id, description and importance properties.
+
+              this.push.createChannel({
+                id: 'testchannel1',
+                description: 'My first test channel',
+                // The importance property goes from 1 = Lowest, 2 = Low, 3 = Normal, 4 = High and 5 = Highest.
+                importance: 3,
+                badge: false
+              }).then(function () {
+                return console.log('Channel created');
+              }); // Delete a channel (Android O and above)
+
+              this.push.deleteChannel('testchannel1').then(function () {
+                return console.log('Channel deleted');
+              }); // Return a list of currently configured channels
+
+              this.push.listChannels().then(function (channels) {
+                return console.log('List of channels', channels);
+              }); // to initialize push notifications
+
+              var options = {
+                android: {},
+                ios: {
+                  alert: 'true',
+                  badge: true,
+                  sound: 'false'
+                },
+                windows: {},
+                browser: {
+                  pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+                }
+              };
+              var pushObject = this.push.init(options);
+              pushObject.on('notification').subscribe(function (notification) {
+                return console.log('Received a notification', notification);
+              });
+              pushObject.on('registration').subscribe(function (registration) {
+                return console.log('Device registered', registration);
+              });
+              pushObject.on('error').subscribe(function (error) {
+                return console.error('Error with Push plugin', error);
+              });
+            } else {
+              console.log('nix cordova');
+            }
+          }
+        }, {
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
@@ -46,7 +119,7 @@
       }();
 
       WelcomeComponent.ɵfac = function WelcomeComponent_Factory(t) {
-        return new (t || WelcomeComponent)();
+        return new (t || WelcomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_1__["Push"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]));
       };
 
       WelcomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -61,7 +134,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "TESTEes");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Welcome");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -87,7 +160,11 @@
             styleUrls: ['./welcome.component.scss']
           }]
         }], function () {
-          return [];
+          return [{
+            type: _ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_1__["Push"]
+          }, {
+            type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
+          }];
         }, null);
       })();
       /***/

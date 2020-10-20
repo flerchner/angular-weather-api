@@ -98,4 +98,10 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="branch-cordova-sdk" spec="^2.5.0" />
+    <branch-config>
+        <branch-key value="key_live_ieV48mlhlm0746ND2uTOEknfwqm8Ghov" />
+        <uri-scheme value="branchcordova" />
+        <link-domain value="d8n8v.app.link" />
+    </branch-config>
 </widget>

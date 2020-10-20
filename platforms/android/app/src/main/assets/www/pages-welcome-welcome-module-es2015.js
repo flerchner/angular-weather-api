@@ -11,18 +11,72 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomeComponent", function() { return WelcomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic-native/push/ngx */ "sJdB");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+
+
 
 
 class WelcomeComponent {
-    constructor() { }
+    constructor(push, platform) {
+        this.push = push;
+        this.platform = platform;
+        this.initIonic();
+    }
+    initIonic() {
+        if (this.platform.is('cordova')) {
+            // to check if we have permission
+            this.push.hasPermission()
+                .then((res) => {
+                if (res.isEnabled) {
+                    console.log('We have permission to send push notifications');
+                }
+                else {
+                    console.log('We do not have permission to send push notifications');
+                }
+            });
+            // Create a channel (Android O and above). You'll need to provide the id, description and importance properties.
+            this.push.createChannel({
+                id: 'testchannel1',
+                description: 'My first test channel',
+                // The importance property goes from 1 = Lowest, 2 = Low, 3 = Normal, 4 = High and 5 = Highest.
+                importance: 3,
+                badge: false
+            }).then(() => console.log('Channel created'));
+            // Delete a channel (Android O and above)
+            this.push.deleteChannel('testchannel1').then(() => console.log('Channel deleted'));
+            // Return a list of currently configured channels
+            this.push.listChannels().then((channels) => console.log('List of channels', channels));
+            // to initialize push notifications
+            const options = {
+                android: {},
+                ios: {
+                    alert: 'true',
+                    badge: true,
+                    sound: 'false'
+                },
+                windows: {},
+                browser: {
+                    pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+                }
+            };
+            const pushObject = this.push.init(options);
+            pushObject.on('notification').subscribe((notification) => console.log('Received a notification', notification));
+            pushObject.on('registration').subscribe((registration) => console.log('Device registered', registration));
+            pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+        }
+        else {
+            console.log('nix cordova');
+        }
+    }
     ngOnInit() {
     }
 }
-WelcomeComponent.ɵfac = function WelcomeComponent_Factory(t) { return new (t || WelcomeComponent)(); };
+WelcomeComponent.ɵfac = function WelcomeComponent_Factory(t) { return new (t || WelcomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_1__["Push"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"])); };
 WelcomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: WelcomeComponent, selectors: [["app-welcome"]], decls: 5, vars: 0, consts: [[1, "welcome-container"]], template: function WelcomeComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "TESTEes");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Welcome");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "To get information about the weather of a current location click on \"weather\" in navigation.");
@@ -36,7 +90,7 @@ WelcomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
                 templateUrl: './welcome.component.html',
                 styleUrls: ['./welcome.component.scss']
             }]
-    }], function () { return []; }, null); })();
+    }], function () { return [{ type: _ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_1__["Push"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] }]; }, null); })();
 
 
 /***/ }),

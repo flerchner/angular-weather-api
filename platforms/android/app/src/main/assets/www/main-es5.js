@@ -451,6 +451,12 @@
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
       /*! @ionic/angular */
       "TEn/");
+      /* harmony import */
+
+
+      var _ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+      /*! @ionic-native/push/ngx */
+      "sJdB");
 
       Object(_angular_common__WEBPACK_IMPORTED_MODULE_12__["registerLocaleData"])(_angular_common_locales_en__WEBPACK_IMPORTED_MODULE_13___default.a);
 
@@ -469,7 +475,7 @@
         providers: [{
           provide: ng_zorro_antd_i18n__WEBPACK_IMPORTED_MODULE_11__["NZ_I18N"],
           useValue: ng_zorro_antd_i18n__WEBPACK_IMPORTED_MODULE_11__["en_US"]
-        }],
+        }, _ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_15__["Push"]],
         imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _icons_provider_module__WEBPACK_IMPORTED_MODULE_4__["IconsProviderModule"], ng_zorro_antd_layout__WEBPACK_IMPORTED_MODULE_5__["NzLayoutModule"], ng_zorro_antd_menu__WEBPACK_IMPORTED_MODULE_6__["NzMenuModule"], ng_zorro_antd__WEBPACK_IMPORTED_MODULE_7__["NzButtonModule"], ng_zorro_antd__WEBPACK_IMPORTED_MODULE_7__["NzGridModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_14__["IonicModule"].forRoot()]]
       });
 
@@ -491,7 +497,7 @@
             providers: [{
               provide: ng_zorro_antd_i18n__WEBPACK_IMPORTED_MODULE_11__["NZ_I18N"],
               useValue: ng_zorro_antd_i18n__WEBPACK_IMPORTED_MODULE_11__["en_US"]
-            }],
+            }, _ionic_native_push_ngx__WEBPACK_IMPORTED_MODULE_15__["Push"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
           }]
         }], null, null);

@@ -47,6 +47,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "PushNotification"
       ]
+    },
+    {
+      "id": "innomobile-branch-cordova-sdk.Branch",
+      "file": "plugins/innomobile-branch-cordova-sdk/src/index.js",
+      "pluginId": "innomobile-branch-cordova-sdk",
+      "clobbers": [
+        "Branch"
+      ]
+    },
+    {
+      "id": "branch-cordova-sdk.Branch",
+      "file": "plugins/branch-cordova-sdk/src/index.js",
+      "pluginId": "branch-cordova-sdk",
+      "clobbers": [
+        "Branch"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -58,6 +74,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-support-google-services": "1.3.2",
     "phonegap-plugin-multidex": "1.0.0",
-    "phonegap-plugin-push": "2.3.0"
+    "phonegap-plugin-push": "2.3.0",
+    "innomobile-branch-cordova-sdk": "3.1.7",
+    "branch-cordova-sdk": "4.2.0"
   };
 });
